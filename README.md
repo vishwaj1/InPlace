@@ -1,5 +1,3 @@
-Here's your updated and enhanced **README** for **InPlace**, incorporating all the awesome features we built together today:
-
 ---
 
 # 📚 InPlace – Interactive Node-based Platform for Learning Algorithms, Code & Execution
@@ -107,6 +105,3 @@ Every real-world use case includes an “Under the Hood” section:
 This is a playground for learning by doing.  
 Want to add a demo? Improve UX? Optimize visuals? Submit a PR or open an issue!
 
----
-
-Let me know if you'd like this saved to your project directory as a `README.md` file!
