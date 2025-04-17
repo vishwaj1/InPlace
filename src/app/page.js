@@ -15,7 +15,7 @@ const dataMap = {
   ],
   'Non-Primitive': {
     Linear: {
-      Static: [{ label: 'Array', href: '/arrays' }],
+      Static: [{ label: 'Array', href: '/non-primitive/linear/static/arrays' }],
       Dynamic: [
         { label: 'Linked List', href: '/linkedlist' },
         { label: 'Stack', href: '/stack' },
@@ -131,7 +131,7 @@ export default function HomePage() {
               <div className="flex flex-col xl:flex-row justify-center items-start xl:items-center gap-10">
                 {/* Linear */}
                 <div className="flex flex-col items-center gap-4">
-                  <Node id="linear" label="Linear" className="bg-cyan-200" />
+                  <Node id="linear" label="Linear" href="/non-primitive/linear" className="bg-cyan-200" />
                   <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
                     <div className="flex flex-col items-center gap-3">
                       <Node id="static" label="Static" className="bg-cyan-100" />
@@ -150,7 +150,7 @@ export default function HomePage() {
 
                 {/* Non-Linear */}
                 <div className="flex flex-col items-center gap-4">
-                  <Node id="non-linear" label="Non-Linear" className="bg-violet-200" />
+                  <Node id="non-linear" label="Non-Linear" href="/non-primitive/non-linear" className="bg-violet-200" />
                   {dataMap['Non-Primitive']['Non-Linear'].map((n) => (
                     <Node key={n.label} id={n.label.toLowerCase()} label={n.label} href={n.href} className="bg-violet-100" />
                   ))}
