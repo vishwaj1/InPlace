@@ -118,7 +118,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row justify-center gap-10 items-start lg:items-center">
             {/* Primitive Branch */}
             <div className="flex flex-col items-center gap-4">
-              <Node id="primitive" label="Primitive" className="bg-blue-300" />
+              <Node id="primitive" label="Primitive" href="/primitive" className="bg-blue-300" />
               {dataMap.Primitive.map((item) => (
                 <Node key={item.label} id={item.label.toLowerCase()} label={item.label} className="bg-blue-100" />
               ))}
@@ -126,7 +126,7 @@ export default function HomePage() {
 
             {/* Non-Primitive Branch */}
             <div className="flex flex-col items-center gap-6">
-              <Node id="non-primitive" label="Non-Primitive" className="bg-pink-300" />
+              <Node id="non-primitive" label="Non-Primitive" href="/non-primitive" className="bg-pink-300" />
 
               <div className="flex flex-col xl:flex-row justify-center items-start xl:items-center gap-10">
                 {/* Linear */}
