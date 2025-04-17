@@ -1,75 +1,112 @@
+Here's your updated and enhanced **README** for **InPlace**, incorporating all the awesome features we built together today:
+
+---
+
 # 📚 InPlace – Interactive Node-based Platform for Learning Algorithms, Code & Execution
 
-InPlace is a hands-on educational platform where every Data Structure and Algorithm is not only explained — it's brought to life with interactive, real-world implementations. Each concept page is crafted using the **very data structure** it teaches.
+**InPlace** is a hands-on educational platform where every **Data Structure** and **Algorithm** is not only explained — it's brought to life with interactive, real-world implementations. Each concept page is crafted using the **very data structure** it teaches.
 
 ---
 
 ## 🔥 What Makes InPlace Unique?
 
 ✅ **Every concept is implemented using itself**  
-On the "Array" page? It's powered by arrays. Learning queues? The demo is a real queue!  
+On the "Array" page? It's powered by arrays. Learning trees? You're literally building one!  
 InPlace teaches by building.
 
 ✅ **Real-World Visual Demos**  
-Instead of abstract examples, you'll learn with practical simulations:
+Instead of abstract examples, you’ll learn with practical simulations:
 
-- 🛒 **Amazon Cart System**  
-  An array holds a dynamic cart. Add/remove items and see the cart update in real time.
+- 🛒 **Amazon Cart System** (Array)  
+  Dynamically manage cart items with array operations like `push`, `splice`, `map`.
 
-- 🎬 **Netflix Watchlist**  
-  Easily append and reorder movies in a state-managed array — just like a real watchlist.
+- 🎬 **Netflix Watchlist** (Array)  
+  Append, index, and reorder movies — just like a real-world watchlist.
 
-- 📺 **YouTube Video Queue**  
-  Simulates a queue with autoplay, reordering, and skips — powered by dynamic array state.
+- 📺 **YouTube Video Queue** (Array as Queue)  
+  Autoplay, reordering, and skipping simulate real video queues.
 
-✅ **"Under the Hood" Section**  
-An interactive explanation area that:
-- Lists how arrays work in each demo
-- Is itself **rearrangeable via drag-and-drop**
-- Built using `Array.map()` — so yes, even this list is powered by arrays ✨
+- 🌳 **Tree Builder**  
+  Add nodes with parent-child hierarchy. Visualize tree structure with animated links.
+
+- 🌐 **Graph Visualizer**  
+  Create and connect nodes in a circular layout. Each node is draggable and interactive.
 
 ---
 
-## 🧠 What You'll Learn
+## 🌱 Structure Visualizer
 
-- How linear data structures (arrays, queues) are used in real applications
-- State management through arrays in React
-- Practical usage of array methods like `push()`, `splice()`, `map()`, and `filter()`
-- Drag-and-drop UI logic with Framer Motion
-- Visualization and live data structure behavior
+The homepage mimics the **actual data structure hierarchy** with:
+
+- Primitive vs Non-Primitive bifurcation
+- Linear vs Non-Linear split
+- Reusable, interactive tree visualization using `reactflow`
+
+---
+
+## 🧠 What You’ll Learn
+
+- Where and how data structures are used in modern apps
+- How arrays, stacks, queues, linked lists, trees, and graphs function in practice
+- Interactive DSA concepts powered by actual state and logic
+- Live rendering and dynamic updates via React
+- Using `reactflow`, `framer-motion`, and other modern tools for visualization
+
+---
+
+## 💡 Under the Hood
+
+Every real-world use case includes an “Under the Hood” section:
+
+- 📌 Explains which operations are being used
+- 🔁 Rearranged interactively via drag-and-drop (built using arrays!)
+- ✨ Even this explainer is powered by the concept it teaches
+
+---
+
+## 🧪 Current Demos & Progress
+
+| Data Structure | Interactive Demos |
+|----------------|-------------------|
+| Array          | Amazon Cart, YouTube Queue, Netflix Watchlist |
+| Stack          | Vertical push/pop with top pointer + stack overflow |
+| Queue          | Horizontal queue layout with front/rear & transitions |
+| Linked List    | Dynamic linking, insertion, deletion simulation |
+| Tree           | Build tree via parent ID, auto-connected visual tree |
+| Graph          | Circular layout, drag-n-drop nodes, edge creation |
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Next.js 13+** with App Router
-- **React** with functional components
-- **Tailwind CSS** for styling
-- **Framer Motion** for animations and drag handling
-- **Lottie React** for real-time SVG animations
+- **Next.js 13+** (App Router)
+- **React 19**
+- **Tailwind CSS** – clean and responsive UI
+- **Framer Motion** – animations, drag, transitions
+- **Lottie React** – JSON animations for visual clarity
+- **React Flow** – for tree and graph data visualization
+- **SVG/Canvas arrows** – for node linking
 
 ---
 
-## 🧪 Upcoming Features
+## 🌟 Upcoming Features
 
-🚀 InPlace will continue to grow with more interactive content:
-
-- 📚 **Stacks** and **Undo/Redo** simulations  
-- 🧶 **Linked Lists** with visual pointer updates and traversal
-- 🧭 **Graph traversal demos** (DFS, BFS) with animations
-- 📊 **Tree visualizer** for binary and n-ary structures
-- 🌐 **LocalStorage sync** so learners don’t lose progress
-- 💡 **Quiz Mode** to test understanding after each topic
-- ⚡ **Code playgrounds** with in-place code editor and instant feedback
-- 🌗 **Theme toggle** for dark/light modes
+- 🧮 **DSA Quiz mode** per topic
+- 🧭 **Graph Traversal Algorithms** (DFS, BFS)
+- 🧠 **Binary Tree + BST visualizers**
+- ♻️ **Undo/Redo logic with Stacks**
+- 🧬 **Doubly Linked Lists & Circular Lists**
+- 🌑 **Dark/Light Mode toggle**
+- 💾 **Save Progress to LocalStorage**
+- 💡 **Custom Code Editor with Live Output**
 
 ---
 
 ## 📬 Contributions Welcome
 
-Feel free to submit PRs, suggest demos, or share feedback. Let’s make data structures visual, practical, and fun for every developer.
+This is a playground for learning by doing.  
+Want to add a demo? Improve UX? Optimize visuals? Submit a PR or open an issue!
 
 ---
 
-
-
+Let me know if you'd like this saved to your project directory as a `README.md` file!
