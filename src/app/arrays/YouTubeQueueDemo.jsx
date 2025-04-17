@@ -89,7 +89,7 @@ export default function YouTubeQueueDemo() {
     <div className="mt-4 mx-auto px-4 w-full max-w-screen-md overflow-hidden">
       <h4 className="text-sm font-medium text-gray-700 mb-2">▶️ YouTube-style Player Simulation</h4>
 
-      <div ref={wrapperRef} className="relative w-full aspect-video bg-black rounded-lg overflow-hidden shadow-md mb-6">
+      <div ref={wrapperRef} className="relative  aspect-[15/6] bg-black rounded-lg overflow-hidden shadow-md mb-6">
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
           {isPlaying ? (
             <PauseCircle size={40} className="text-red-500 mb-4 cursor-pointer" onClick={() => setIsPlaying(false)} />
