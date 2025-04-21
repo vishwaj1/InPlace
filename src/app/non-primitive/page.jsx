@@ -4,7 +4,18 @@ import { useEffect } from 'react';
 import LeaderLine from 'leader-line-new';
 
 const Node = ({ id, label }) => {
-  const href = `/${id}`;
+  const hrefMap = {
+    'array': 'non-primitive/linear/static/arrays/',
+    'stack': '/stack',
+    'queue': '/queue',
+    'linkedlist': '/linkedlist',
+    'tree': '/tree',
+    'graph': '/graph',
+    'linear': 'non-primitive/linear',
+    'non-linear': 'non-primitive/non-linear',
+    'non-primitive': '/non-primitive'
+  };
+  const href = hrefMap[id] || `/${id}`;
   return (
     <a href={href} className="no-underline">
       <div
