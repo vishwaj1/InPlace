@@ -4,7 +4,25 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-
+export function explainLinkedList() {
+  return (
+    <div className="text-left text-sm text-gray-700 space-y-3">
+      <p>
+        This demo illustrates a <span className="font-semibold text-emerald-600">Linked List</span> structure with animated node management and directional arrows:
+      </p>
+      <ul className="list-disc list-inside space-y-2">
+        <li><span className="font-medium">➕ Insert Head:</span> Prepends a new node using array spread, simulating a head pointer update.</li>
+        <li><span className="font-medium">➕ Insert Tail:</span> Appends a node to the end via state spreading — mimicking traditional tail insertion.</li>
+        <li><span className="font-medium">🔢 Insert @ Index:</span> Inserts at any position using <code>.splice()</code>, dynamically adjusting connections.</li>
+        <li><span className="font-medium">❌ Delete:</span> Removes a node from head, tail, or specific index using array filtering/splicing logic.</li>
+        <li><span className="font-medium">🔄 Reset:</span> Empties the linked list state and resets it visually.</li>
+      </ul>
+      <p>
+        Directional arrows between nodes mimic <span className="italic">next</span> pointers, and all transitions are smoothly animated with <span className="font-semibold text-purple-600">Framer Motion</span>. The demo bridges theory and UI in a dynamic, intuitive way.
+      </p>
+    </div>
+  );
+}
 
 export default function LinkedListDemo() {
   const [list, setList] = useState([1, 2, 3]);
