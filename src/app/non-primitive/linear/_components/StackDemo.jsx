@@ -3,6 +3,26 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+export function explainStack() {
+  return (
+    <div className="text-left text-sm text-gray-700 space-y-3">
+      <p>
+        This demo simulates a classic <span className="font-semibold text-blue-600">Stack</span> data structure with live interactions and animations:
+      </p>
+      <ul className="list-disc list-inside space-y-2">
+        <li><span className="font-medium">📥 Push:</span> Adds an element to the top of the stack using <code>.push()</code>-like behavior.</li>
+        <li><span className="font-medium">📤 Pop:</span> Removes the top item using <code>.slice(0, -1)</code>, showcasing LIFO (Last-In-First-Out).</li>
+        <li><span className="font-medium">🟨 Top Highlight:</span> The top item is visually marked in yellow to indicate the stack's top.</li>
+        <li><span className="font-medium">🚫 Overflow:</span> Displays an error when the stack exceeds 5 items.</li>
+        <li><span className="font-medium">🔁 Reset:</span> Resets the stack to an empty state.</li>
+        <li><span className="font-medium">🔢 Indexing:</span> Shows index numbers beside each element for clarity.</li>
+      </ul>
+      <p>
+        All operations are handled with <code>React state</code> and animated via <span className="font-semibold text-purple-600">Framer Motion</span> to make stack behavior easy and fun to understand.
+      </p>
+    </div>
+  );
+}
 
 export default function StackDemo() {
   const [stack, setStack] = useState([1, 2, 3]);
