@@ -4,7 +4,25 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-
+export function explainQueue() {
+  return (
+    <div className="text-left text-sm text-gray-700 space-y-3">
+      <p>
+        This demo simulates a functional <span className="font-semibold text-green-600">Queue</span> data structure with animated enqueue and dequeue operations:
+      </p>
+      <ul className="list-disc list-inside space-y-2">
+        <li><span className="font-medium">📥 Enqueue:</span> Adds an element to the rear using array spreading to simulate <code>.push()</code>.</li>
+        <li><span className="font-medium">📤 Dequeue:</span> Removes the element from the front using <code>.slice(1)</code>, maintaining FIFO behavior.</li>
+        <li><span className="font-medium">📍 Labels:</span> Front and Rear are clearly labeled to visualize entry and exit points.</li>
+        <li><span className="font-medium">🚫 Overflow:</span> Prevents adding beyond a maximum size of 5 and displays a warning.</li>
+        <li><span className="font-medium">🔁 Reset:</span> Clears all elements and resets the queue state.</li>
+      </ul>
+      <p>
+        Built with <code>React state</code> and <span className="font-semibold text-purple-600">Framer Motion</span> animations, this demo helps visualize how a queue operates in real-time.
+      </p>
+    </div>
+  );
+}
 
 export default function QueueDemo() {
   const [queue, setQueue] = useState([10, 20, 30]);
