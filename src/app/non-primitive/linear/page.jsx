@@ -20,6 +20,7 @@ export default function LinearPage() {
     <p className="text-gray-700 mt-2">
       An array is a fixed-size data structure that stores elements of the same type in contiguous memory locations. It allows for efficient indexing and fast retrieval of elements by position. Arrays are ideal when the number of elements is known in advance, such as storing monthly sales data or daily temperatures.
     </p>
+    <li>{explainArray()}</li>
     <div className="mt-3 bg-cyan-50 p-3 rounded text-sm">
       <ArrayDemo />
     </div>
@@ -30,6 +31,7 @@ export default function LinearPage() {
     <p className="text-gray-700 mt-2">
       A linked list is a dynamic data structure where each element (called a node) contains a value and a reference to the next node. This structure allows efficient insertions and deletions, especially at the beginning or middle. It's commonly used in music playlists, undo features, and memory-efficient storage.
     </p>
+    <li> {explainLinkedList()}</li>
     <div className="mt-3 bg-cyan-50 p-3 rounded text-sm">
       <LinkedListDemo />
     </div>
@@ -40,8 +42,10 @@ export default function LinearPage() {
     <p className="text-gray-700 mt-2">
       A stack is a linear structure that follows the Last In First Out (LIFO) principle. Elements are added and removed from the top of the stack. It is frequently used in recursion, syntax parsing, and the browser's back button feature.
     </p>
+    <li>{explainStack()}</li>
     <div className="mt-3 bg-cyan-50 p-3 rounded text-sm">
       <StackDemo />
+      <explainStack/>
     </div>
   </div>
 
@@ -50,6 +54,8 @@ export default function LinearPage() {
     <p className="text-gray-700 mt-2">
       A queue is a linear data structure that operates on a First In First Out (FIFO) basis. It is useful in scenarios like task scheduling, print queues, and customer service systems where processing occurs in the order of arrival.
     </p>
+    <li> {explainQueue()}</li>
+
     <div className="mt-3 bg-cyan-50 p-3 rounded text-sm">
       <QueueDemo />
     </div>
@@ -62,16 +68,7 @@ export default function LinearPage() {
         </p>
       </div>
 
-      <div className="mt-12 bg-white rounded-xl shadow p-6">
-        <h2 className="text-2xl font-semibold text-cyan-700 mb-4">🧠 Under the Hood</h2>
-        <h2 className="text-left font-semibold text-gray-700 space-y-3">Let's dive in deep how each of the Demo works in detail</h2>
-        <ul className="list-disc list-inside space-y-3 text-gray-700">
-          <li><strong>ArrayDemo:</strong> {explainArray()}</li>
-          <li><strong>LinkedListDemo:</strong> {explainLinkedList()}</li>
-          <li><strong>StackDemo:</strong> {explainStack()}</li>
-          <li><strong>QueueDemo:</strong> {explainQueue()}</li>
-        </ul>
-      </div>
+      
     </main>
   );
 }

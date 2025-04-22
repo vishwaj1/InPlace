@@ -4,22 +4,44 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function explainStack() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="text-left text-sm text-gray-700 space-y-3">
-      <p>
-        This demo simulates a classic <span className="font-semibold text-blue-600">Stack</span> data structure with live interactions and animations:
-      </p>
-      <ul className="list-disc list-inside space-y-2">
-        <li><span className="font-medium">📥 Push:</span> Adds an element to the top of the stack using <code>.push()</code>-like behavior.</li>
-        <li><span className="font-medium">📤 Pop:</span> Removes the top item using <code>.slice(0, -1)</code>, showcasing LIFO (Last-In-First-Out).</li>
-        <li><span className="font-medium">🟨 Top Highlight:</span> The top item is visually marked in yellow to indicate the stack's top.</li>
-        <li><span className="font-medium">🚫 Overflow:</span> Displays an error when the stack exceeds 5 items.</li>
-        <li><span className="font-medium">🔁 Reset:</span> Resets the stack to an empty state.</li>
-        <li><span className="font-medium">🔢 Indexing:</span> Shows index numbers beside each element for clarity.</li>
-      </ul>
-      <p>
-        All operations are handled with <code>React state</code> and animated via <span className="font-semibold text-purple-600">Framer Motion</span> to make stack behavior easy and fun to understand.
-      </p>
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-yellow-700 font-semibold hover:underline mb-2"
+      >
+        {open ? 'Hide Explanation ▲' : 'Show Explanation ▼'}
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
+            <div className="text-left text-sm text-gray-700 space-y-3">
+              <p>
+                This demo simulates a classic <span className="font-semibold text-yellow-600">Stack</span> data structure with animated behavior and limited capacity:
+              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li><span className="font-medium">📥 Push:</span> Adds a value to the top of the stack using array spreading (like <code>.push()</code>).</li>
+                <li><span className="font-medium">📤 Pop:</span> Removes the top item using <code>.slice(0, -1)</code>, demonstrating LIFO access.</li>
+                <li><span className="font-medium">🟨 Top Highlight:</span> Highlights the top item in yellow to mark the stack’s top.</li>
+                <li><span className="font-medium">🚫 Overflow:</span> Limits stack to 5 items and displays an error when exceeded.</li>
+                <li><span className="font-medium">🔁 Reset:</span> Clears all stack contents instantly.</li>
+                <li><span className="font-medium">🔢 Indexing:</span> Each element is labeled with its index for easy reference.</li>
+              </ul>
+              <p>
+                Built with <code>React state</code> and <span className="font-semibold text-purple-600">Framer Motion</span>, this demo visualizes each step in stack manipulation clearly and interactively.
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -4,9 +4,28 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+
 export function explainLinkedList() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="text-left text-sm text-gray-700 space-y-3">
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-emerald-700 font-semibold hover:underline mb-2"
+      >
+        {open ? 'Hide Explanation ▲' : 'Show Explanation ▼'}
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
       <p>
         This demo illustrates a <span className="font-semibold text-emerald-600">Linked List</span> structure with animated node management and directional arrows:
       </p>
@@ -20,9 +39,14 @@ export function explainLinkedList() {
       <p>
         Directional arrows between nodes mimic <span className="italic">next</span> pointers, and all transitions are smoothly animated with <span className="font-semibold text-purple-600">Framer Motion</span>. The demo bridges theory and UI in a dynamic, intuitive way.
       </p>
+              </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
+
 
 export default function LinkedListDemo() {
   const [list, setList] = useState([1, 2, 3]);

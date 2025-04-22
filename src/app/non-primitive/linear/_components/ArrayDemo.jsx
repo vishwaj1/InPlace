@@ -4,8 +4,25 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function explainArray() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="text-left text-sm text-gray-700 space-y-3">
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-blue-700 font-semibold hover:underline mb-2"
+      >
+        {open ? 'Hide Explanation ▲' : 'Show Explanation ▼'}
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
       <p>
         This interactive demo showcases an <span className="font-semibold text-blue-600">Array</span> and its core operations with real-time feedback and animation:
       </p>
@@ -20,6 +37,9 @@ export function explainArray() {
       <p>
         Powered by <code>React state</code> and <span className="font-semibold text-purple-600">Framer Motion</span>, this demo provides a fun and clear way to understand how arrays are manipulated visually.
       </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

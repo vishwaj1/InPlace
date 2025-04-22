@@ -5,8 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 export function explainQueue() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="text-left text-sm text-gray-700 space-y-3">
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-green-700 font-semibold hover:underline mb-2"
+      >
+        {open ? 'Hide Explanation ▲' : 'Show Explanation ▼'}
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
       <p>
         This demo simulates a functional <span className="font-semibold text-green-600">Queue</span> data structure with animated enqueue and dequeue operations:
       </p>
@@ -20,9 +37,13 @@ export function explainQueue() {
       <p>
         Built with <code>React state</code> and <span className="font-semibold text-purple-600">Framer Motion</span> animations, this demo helps visualize how a queue operates in real-time.
       </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+
 
 export default function QueueDemo() {
   const [queue, setQueue] = useState([10, 20, 30]);
