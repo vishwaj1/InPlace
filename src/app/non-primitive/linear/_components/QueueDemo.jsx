@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+
+
 export default function QueueDemo() {
   const [queue, setQueue] = useState([10, 20, 30]);
   const [input, setInput] = useState('');

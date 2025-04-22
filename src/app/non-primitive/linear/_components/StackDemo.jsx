@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+
 export default function StackDemo() {
   const [stack, setStack] = useState([1, 2, 3]);
   const MAX_SIZE = 5;

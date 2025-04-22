@@ -1,9 +1,9 @@
 'use client';
 
-import ArrayDemo from './_components/ArrayDemo';
-import LinkedListDemo from './_components/LinkedListDemo';
-import StackDemo from './_components/StackDemo';
-import QueueDemo from './_components/QueueDemo';
+import ArrayDemo, { explainArray } from './_components/ArrayDemo';
+import LinkedListDemo, { explainLinkedList } from './_components/LinkedListDemo';
+import StackDemo, { explainStack } from './_components/StackDemo';
+import QueueDemo, { explainQueue } from './_components/QueueDemo';
 
 export default function LinearPage() {
   return (
@@ -60,6 +60,17 @@ export default function LinearPage() {
         <p className="mt-6 text-gray-600">
           Linear structures are typically easy to implement and traverse, making them a starting point for learning about algorithmic thinking and efficient memory access.
         </p>
+      </div>
+
+      <div className="mt-12 bg-white rounded-xl shadow p-6">
+        <h2 className="text-2xl font-semibold text-cyan-700 mb-4">🧠 Under the Hood</h2>
+        <h2 className="text-left font-semibold text-gray-700 space-y-3">Let's dive in deep how each of the Demo works in detail</h2>
+        <ul className="list-disc list-inside space-y-3 text-gray-700">
+          <li><strong>ArrayDemo:</strong> {explainArray()}</li>
+          <li><strong>LinkedListDemo:</strong> {explainLinkedList()}</li>
+          <li><strong>StackDemo:</strong> {explainStack()}</li>
+          <li><strong>QueueDemo:</strong> {explainQueue()}</li>
+        </ul>
       </div>
     </main>
   );

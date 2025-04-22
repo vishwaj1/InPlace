@@ -3,6 +3,28 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+export function explainArray() {
+  return (
+    <div className="text-left text-sm text-gray-700 space-y-3">
+      <p>
+        This interactive demo showcases an <span className="font-semibold text-blue-600">Array</span> and its core operations with real-time feedback and animation:
+      </p>
+      <ul className="list-disc list-inside space-y-2">
+        <li><span className="font-medium">🔢 Push:</span> Adds a value at the end using <code>.push()</code>, expanding the array dynamically.</li>
+        <li><span className="font-medium">🧼 Pop:</span> Removes the last element using <code>.slice(0, -1)</code>, mimicking stack-like behavior.</li>
+        <li><span className="font-medium">🔍 Access:</span> Retrieves elements by index to show O(1) direct access speed.</li>
+        <li><span className="font-medium">🧪 Search:</span> Uses <code>.indexOf()</code> to highlight where values are found in the array.</li>
+        <li><span className="font-medium">🔃 Sort:</span> Reorders the array in ascending order using <code>.sort()</code>.</li>
+        <li><span className="font-medium">♻️ Reset:</span> Clears the array entirely and returns to an empty state.</li>
+      </ul>
+      <p>
+        Powered by <code>React state</code> and <span className="font-semibold text-purple-600">Framer Motion</span>, this demo provides a fun and clear way to understand how arrays are manipulated visually.
+      </p>
+    </div>
+  );
+}
+
+
 export default function ArrayDemo() {
   const [array, setArray] = useState([1, 2, 3]);
   const [input, setInput] = useState('');

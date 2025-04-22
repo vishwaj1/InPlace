@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+
+
 export default function LinkedListDemo() {
   const [list, setList] = useState([1, 2, 3]);
   const [input, setInput] = useState('');
