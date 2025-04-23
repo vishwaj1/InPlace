@@ -3,6 +3,48 @@
 import { useState, useMemo } from 'react';
 import ReactFlow, { Background, Controls, MiniMap } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export function explainTree() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="text-left text-sm text-gray-700 space-y-3 mt-8">
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-purple-700 font-semibold hover:underline mb-2"
+      >
+        {open ? 'Hide Explanation ▲' : 'Show Explanation ▼'}
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
+            <p>
+              This demo visualizes a <span className="font-semibold text-purple-600">Tree</span> data structure with support for real-time node creation, deletion, and searching:
+            </p>
+            <ul className="list-disc list-inside space-y-2">
+              <li><span className="font-medium">🌱 Add Node:</span> Creates a new node and connects it to a specified parent using a recursive insertion function.</li>
+              <li><span className="font-medium">🪓 Delete Node:</span> Removes the target node and its children via recursive traversal and filtering.</li>
+              <li><span className="font-medium">🔍 Search Node:</span> Highlights a node by ID using state comparison and ReactFlow styles.</li>
+              <li><span className="font-medium">📐 Layout:</span> Nodes are dynamically positioned by traversal depth and order.</li>
+              <li><span className="font-medium">🧠 Visual Tools:</span> Uses <code>ReactFlow</code> with a MiniMap, Controls, and Background to enhance the UI.</li>
+            </ul>
+            <p>
+              The logic is powered by <code>useState</code>, recursive tree mapping, and animated with <code>Framer Motion</code> for a clear and interactive experience.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 
 export default function TreeDemo() {
   const [tree, setTree] = useState([
