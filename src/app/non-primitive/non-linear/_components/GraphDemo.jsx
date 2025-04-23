@@ -9,6 +9,50 @@ import ReactFlow, {
   MarkerType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export function explainGraph() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="text-left text-sm text-gray-700 space-y-3">
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-indigo-700 font-semibold hover:underline mb-2"
+      >
+        {open ? 'Hide Explanation ▲' : 'Show Explanation ▼'}
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-3"
+          >
+      <p>
+        This demo provides an interactive and visual representation of a <span className="font-semibold text-indigo-600">Graph</span> data structure using <code>React Flow</code>:
+      </p>
+      <ul className="list-disc list-inside space-y-2">
+        <li><span className="font-medium">🔘 Nodes:</span> Initially placed in a circular layout, nodes are labeled A–F and are represented as draggable circles.</li>
+        <li><span className="font-medium">➕ Add Node:</span> Adds a new node with a label (e.g., G, H, ...) and random position on the canvas.</li>
+        <li><span className="font-medium">🔗 Add Edge:</span> Connects two nodes using directional arrows by specifying their IDs.</li>
+        <li><span className="font-medium">🎯 Arrows:</span> Directional edges indicate the flow of the graph, powered by <code>MarkerType.ArrowClosed</code>.</li>
+        <li><span className="font-medium">🧭 Controls:</span> Zoom, pan, and fit-to-view tools let users explore the full graph.</li>
+        <li><span className="font-medium">🗺️ MiniMap:</span> Offers a real-time overview of the entire node graph.</li>
+      </ul>
+      <p>
+        This implementation demonstrates the dynamic nature of graphs in UI and algorithm visualization, giving learners an engaging way to explore <span className="font-semibold text-purple-600">nodes</span> and <span className="font-semibold text-purple-600">edges</span> interactively.
+      </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+
 
 export default function GraphDemo() {
   const [nodes, setNodes] = useState([

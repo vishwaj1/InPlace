@@ -1,7 +1,7 @@
 'use client';
 
 import TreeDemo from './_components/TreeDemo';
-import GraphDemo from './_components/GraphDemo';
+import GraphDemo,{explainGraph} from './_components/GraphDemo';
 
 export default function NonLinearPage() {
   return (
@@ -20,6 +20,7 @@ export default function NonLinearPage() {
             </p>
             <div className="mt-3 bg-purple-50 p-3 rounded">
               <TreeDemo />
+              
             </div>
           </div>
 
@@ -30,6 +31,7 @@ export default function NonLinearPage() {
             </p>
             <div className="mt-3 bg-purple-50 p-3 rounded">
               <GraphDemo />
+              <li><strong>{explainGraph()}</strong></li>
             </div>
           </div>
         </div>
