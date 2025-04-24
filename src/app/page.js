@@ -17,7 +17,7 @@ const dataMap = {
     Linear: {
       Static: [{ label: 'Array', href: '/non-primitive/linear/static/arrays' }],
       Dynamic: [
-        { label: 'Linked List', href: '/linkedlist' },
+        { label: 'Linked List', href: '/non-primitive/linear/dynamic/linked-list' },
         { label: 'Stack', href: '/stack' },
         { label: 'Queue', href: '/queue' }
       ]
