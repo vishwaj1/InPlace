@@ -1,7 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
-import LeaderLine from 'leader-line-new';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import LeaderLine with no SSR
+const LeaderLine = dynamic(() => import('leader-line-new'), { ssr: false });
 
 const Node = ({ id, label }) => {
   const hrefMap = {
@@ -29,53 +32,58 @@ const Node = ({ id, label }) => {
 };
 
 export default function NonPrimitivePage() {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    let lines = [];
-    const connect = (from, to) => {
-      const start = document.getElementById(from);
-      const end = document.getElementById(to);
-      if (start && end) {
-        const line = new LeaderLine(start, end, {
-          path: 'straight',
-          startSocket: 'bottom',
-          endSocket: 'top',
-          color: '#3b82f6',
-          size: 2,
-          dash: { animation: true },
-          startPlug: 'disc',
-          endPlug: 'arrow1',
-          startPlugSize: 0.8,
-          endPlugSize: 1.2,
-          socketGravity: 100
-        });
-        lines.push(line);
-      }
-    };
+    setIsClient(true);
+    if (typeof window !== 'undefined') {
+      let lines = [];
+      const connect = (from, to) => {
+        const start = document.getElementById(from);
+        const end = document.getElementById(to);
+        if (start && end) {
+          const line = new LeaderLine(start, end, {
+            path: 'straight',
+            startSocket: 'bottom',
+            endSocket: 'top',
+            color: '#3b82f6',
+            size: 2,
+            dash: { animation: true },
+            startPlug: 'disc',
+            endPlug: 'arrow1',
+            startPlugSize: 0.8,
+            endPlugSize: 1.2,
+            socketGravity: 100
+          });
+          lines.push(line);
+        }
+      };
 
-    connect('non-primitive', 'linear');
-    connect('non-primitive', 'non-linear');
+      connect('non-primitive', 'linear');
+      connect('non-primitive', 'non-linear');
 
-    const linearChildren = ['static', 'array'];
-    const dynamicChildren = ['dynamic', 'stack', 'queue', 'linkedlist'];
-    linearChildren.forEach((id, index) => {
-      if (index === 0) connect('linear', id);
-      else connect(linearChildren[index - 1], id);
-    });
+      const linearChildren = ['static', 'array'];
+      const dynamicChildren = ['dynamic', 'stack', 'queue', 'linkedlist'];
+      linearChildren.forEach((id, index) => {
+        if (index === 0) connect('linear', id);
+        else connect(linearChildren[index - 1], id);
+      });
 
-    dynamicChildren.forEach((id, index) => {
-      if (index === 0) connect('linear', id);
-      else connect(dynamicChildren[index - 1], id);
-    });
+      dynamicChildren.forEach((id, index) => {
+        if (index === 0) connect('linear', id);
+        else connect(dynamicChildren[index - 1], id);
+      });
 
-    const nonLinearChildren = ['tree', 'graph'];
-    nonLinearChildren.forEach((id, index) => {
-      if (index === 0) connect('non-linear', id);
-      else connect(nonLinearChildren[index - 1], id);
-    });
+      const nonLinearChildren = ['tree', 'graph'];
+      nonLinearChildren.forEach((id, index) => {
+        if (index === 0) connect('non-linear', id);
+        else connect(nonLinearChildren[index - 1], id);
+      });
 
-    return () => {
-      lines.forEach((line) => line.remove());
-    };
+      return () => {
+        lines.forEach((line) => line.remove());
+      };
+    }
   }, []);
 
   return (

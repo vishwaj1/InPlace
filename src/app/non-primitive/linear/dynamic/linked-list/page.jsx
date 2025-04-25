@@ -2,12 +2,17 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Lottie from 'lottie-react';
-import browserAnim from '../../../public/animations/browser.json';
-import musicAnim from '../../../public/animations/music.json';
-import textAnim from '../../../public/animations/text.json';
-import undoAnim from '../../../public/animations/undo.json';
-import gitAnim from '../../../public/animations/git.json';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Lottie with no SSR
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+
+// Dynamically import animations
+const browserAnim = dynamic(() => import('/public/animations/browser.json'), { ssr: false });
+const musicAnim = dynamic(() => import('/public/animations/music.json'), { ssr: false });
+const textAnim = dynamic(() => import('/public/animations/text.json'), { ssr: false });
+const undoAnim = dynamic(() => import('/public/animations/undo.json'), { ssr: false });
+const gitAnim = dynamic(() => import('/public/animations/git.json'), { ssr: false });
 
 // Import modularized components
 import BrowserHistoryDemo, { explainBrowserHistory } from './_components/BrowserHistoryDemo';

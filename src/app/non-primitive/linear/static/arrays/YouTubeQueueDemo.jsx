@@ -11,8 +11,13 @@ import {
   PlusCircle,
   Trash2
 } from 'lucide-react';
-import Lottie from 'lottie-react';
-import youtubeAnim from '/public/animations/youtube.json';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Lottie with no SSR
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+
+// Dynamically import animations
+const youtubeAnim = dynamic(() => import('/public/animations/youtube.json'), { ssr: false });
 
 const videoLibrary = [
   'React Crash Course',

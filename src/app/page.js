@@ -2,8 +2,11 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import LeaderLine from 'leader-line-new';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+// Dynamically import LeaderLine with no SSR
+const LeaderLine = dynamic(() => import('leader-line-new'), { ssr: false });
 
 const dataMap = {
   Primitive: [
@@ -42,65 +45,70 @@ const Node = ({ id, label, href, className }) => (
 );
 
 export default function HomePage() {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    const lines = [];
-    const connect = (from, to) => {
-      const start = document.getElementById(from);
-      const end = document.getElementById(to);
-      if (start && end) {
-        const line = new LeaderLine(start, end, {
-          path: 'straight',
-          startSocket: 'bottom',
-          endSocket: 'top',
-          color: '#3b82f6',
-          size: 2,
-          dash: { animation: true },
-          startPlug: 'disc',
-          endPlug: 'arrow1',
-          endPlugSize: 1.5,
-          startPlugSize: 0.8,
-          socketGravity: 100
-        });
-        lines.push(line);
-      }
-    };
+    setIsClient(true);
+    if (typeof window !== 'undefined') {
+      let lines = [];
+      const connect = (from, to) => {
+        const start = document.getElementById(from);
+        const end = document.getElementById(to);
+        if (start && end) {
+          const line = new LeaderLine(start, end, {
+            path: 'straight',
+            startSocket: 'bottom',
+            endSocket: 'top',
+            color: '#3b82f6',
+            size: 2,
+            dash: { animation: true },
+            startPlug: 'disc',
+            endPlug: 'arrow1',
+            startPlugSize: 0.8,
+            endPlugSize: 1.2,
+            socketGravity: 100
+          });
+          lines.push(line);
+        }
+      };
 
-    connect('ds', 'primitive');
-    connect('ds', 'non-primitive');
+      connect('ds', 'primitive');
+      connect('ds', 'non-primitive');
 
-    dataMap.Primitive.forEach((item, index, arr) => {
-      const id = item.label.toLowerCase();
-      if (index === 0) {
-        connect('primitive', id);
-      } else {
-        connect(arr[index - 1].label.toLowerCase(), id);
-      }
-    });
+      dataMap.Primitive.forEach((item, index, arr) => {
+        const id = item.label.toLowerCase();
+        if (index === 0) {
+          connect('primitive', id);
+        } else {
+          connect(arr[index - 1].label.toLowerCase(), id);
+        }
+      });
 
-    connect('non-primitive', 'linear');
-    connect('non-primitive', 'non-linear');
+      connect('non-primitive', 'linear');
+      connect('non-primitive', 'non-linear');
 
-    connect('linear', 'static');
-    connect('linear', 'dynamic');
-    connect('static', 'array');
-    ['stack', 'queue', 'linked list'].forEach((id, index, arr) => {
-      if (index === 0) {
-        connect('dynamic', id);
-      } else {
-        connect(arr[index - 1], id);
-      }
-    });
-    ['tree', 'graph'].forEach((id, index, arr) => {
-      if (index === 0) {
-        connect('non-linear', id);
-      } else {
-        connect(arr[index - 1], id);
-      }
-    });
+      connect('linear', 'static');
+      connect('linear', 'dynamic');
+      connect('static', 'array');
+      ['stack', 'queue', 'linked list'].forEach((id, index, arr) => {
+        if (index === 0) {
+          connect('dynamic', id);
+        } else {
+          connect(arr[index - 1], id);
+        }
+      });
+      ['tree', 'graph'].forEach((id, index, arr) => {
+        if (index === 0) {
+          connect('non-linear', id);
+        } else {
+          connect(arr[index - 1], id);
+        }
+      });
 
-    return () => {
-      lines.forEach((line) => line.remove());
-    };
+      return () => {
+        lines.forEach((line) => line.remove());
+      };
+    }
   }, []);
 
   return (
