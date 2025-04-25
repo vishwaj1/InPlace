@@ -3,8 +3,59 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
+export const explainAmazonCart = () => {
+  return (
+    <div className="mt-4 bg-green-50 p-4 rounded-lg border border-green-200">
+      <h3 className="text-lg font-semibold text-green-800 mb-2">How Shopping Carts Work with Arrays</h3>
+      <p className="text-green-700 mb-2">
+        Shopping carts in e-commerce applications like Amazon use arrays to store and manage items. Here's how it works:
+      </p>
+      <ul className="list-disc pl-5 text-green-700 space-y-1">
+        <li>Each item in the cart is an <strong>element</strong> in the array</li>
+        <li>When a user adds an item, it's pushed to the end of the array</li>
+        <li>When a user removes an item, it's filtered out or spliced from the array</li>
+        <li>The array maintains the order of items as they were added</li>
+        <li>Arrays allow for easy iteration to display all items in the cart</li>
+        <li>Arrays enable quick calculations like total price by reducing over all items</li>
+      </ul>
+      <div className="mt-3 p-3 bg-green-100 rounded-md">
+        <p className="text-green-800 font-medium">Code Implementation:</p>
+        <pre className="text-xs text-green-900 mt-1 overflow-x-auto">
+{`// Shopping cart implementation
+class ShoppingCart {
+  constructor() {
+    this.items = [];
+  }
+  
+  addItem(product) {
+    this.items.push(product);
+  }
+  
+  removeItem(index) {
+    this.items.splice(index, 1);
+  }
+  
+  getTotalPrice() {
+    return this.items.reduce((total, item) => total + item.price, 0);
+  }
+  
+  getItemCount() {
+    return this.items.length;
+  }
+  
+  clearCart() {
+    this.items = [];
+  }
+}`}
+        </pre>
+      </div>
+    </div>
+  );
+};
+
 export default function AmazonCartDemo({ products }) {
   const [cart, setCart] = useState([]);
+  const [showExplanation, setShowExplanation] = useState(false);
 
   const addToCart = (product) => {
     setCart((prev) => [...prev, product]);
@@ -59,6 +110,17 @@ export default function AmazonCartDemo({ products }) {
             </button>
           </div>
         ))}
+      </div>
+      
+      <div className="mt-6">
+        <button 
+          onClick={() => setShowExplanation(!showExplanation)}
+          className="flex items-center gap-1 text-green-600 hover:text-green-800"
+        >
+          <span>{showExplanation ? 'Hide' : 'Show'} Implementation Details</span>
+          <span>{showExplanation ? '▲' : '▼'}</span>
+        </button>
+        {showExplanation && explainAmazonCart()}
       </div>
     </div>
   );

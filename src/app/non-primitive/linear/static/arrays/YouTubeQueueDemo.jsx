@@ -11,6 +11,8 @@ import {
   PlusCircle,
   Trash2
 } from 'lucide-react';
+import Lottie from 'lottie-react';
+import youtubeAnim from '/public/animations/youtube.json';
 
 const videoLibrary = [
   'React Crash Course',
@@ -25,10 +27,91 @@ const videoLibrary = [
   'State Management with Redux'
 ];
 
+export const explainYouTubeQueue = () => {
+  return (
+    <div className="mt-4 bg-red-50 p-4 rounded-lg border border-red-200">
+      <h3 className="text-lg font-semibold text-red-800 mb-2">How Video Queues Work with Arrays</h3>
+      <p className="text-red-700 mb-2">
+        YouTube's video queue system uses arrays to manage the playlist of videos. Here's how it works:
+      </p>
+      <ul className="list-disc pl-5 text-red-700 space-y-1">
+        <li>Each video in the queue is an <strong>element</strong> in the array</li>
+        <li>When a user adds a video, it's pushed to the end of the array</li>
+        <li>When a video finishes playing, it's removed from the front of the array</li>
+        <li>Arrays allow for easy reordering of videos using array methods</li>
+        <li>The array maintains the order of videos as specified by the user</li>
+        <li>Arrays enable quick access to any video by its index</li>
+      </ul>
+      <div className="mt-3 p-3 bg-red-100 rounded-md">
+        <p className="text-red-800 font-medium">Code Implementation:</p>
+        <pre className="text-xs text-red-900 mt-1 overflow-x-auto">
+{`// Video Queue implementation
+class VideoQueue {
+  constructor() {
+    this.videos = [];
+    this.currentIndex = 0;
+  }
+  
+  addVideo(video) {
+    this.videos.push(video);
+  }
+  
+  removeVideo(index) {
+    this.videos.splice(index, 1);
+    if (index < this.currentIndex) {
+      this.currentIndex--;
+    }
+  }
+  
+  moveUp(index) {
+    if (index > 0) {
+      [this.videos[index], this.videos[index - 1]] = 
+      [this.videos[index - 1], this.videos[index]];
+      if (index === this.currentIndex) {
+        this.currentIndex--;
+      } else if (index - 1 === this.currentIndex) {
+        this.currentIndex++;
+      }
+    }
+  }
+  
+  moveDown(index) {
+    if (index < this.videos.length - 1) {
+      [this.videos[index], this.videos[index + 1]] = 
+      [this.videos[index + 1], this.videos[index]];
+      if (index === this.currentIndex) {
+        this.currentIndex++;
+      } else if (index + 1 === this.currentIndex) {
+        this.currentIndex--;
+      }
+    }
+  }
+  
+  getCurrentVideo() {
+    return this.videos[this.currentIndex];
+  }
+  
+  nextVideo() {
+    if (this.currentIndex < this.videos.length - 1) {
+      this.currentIndex++;
+    }
+  }
+  
+  getLength() {
+    return this.videos.length;
+  }
+}`}
+        </pre>
+      </div>
+    </div>
+  );
+};
+
 export default function YouTubeQueueDemo() {
   const [queue, setQueue] = useState(videoLibrary.slice(0, 3));
   const [current, setCurrent] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [showExplanation, setShowExplanation] = useState(false);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -159,6 +242,17 @@ export default function YouTubeQueueDemo() {
       >
         <SkipForward size={16} /> Skip to Next
       </button>
+
+      <div className="mt-6">
+        <button 
+          onClick={() => setShowExplanation(!showExplanation)}
+          className="flex items-center gap-1 text-red-600 hover:text-red-800"
+        >
+          <span>{showExplanation ? 'Hide' : 'Show'} Implementation Details</span>
+          <span>{showExplanation ? '▲' : '▼'}</span>
+        </button>
+        {showExplanation && explainYouTubeQueue()}
+      </div>
     </div>
   );
 }
