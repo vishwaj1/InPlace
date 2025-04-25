@@ -18,18 +18,24 @@ export default function ArraysPage() {
     { 
       id: 'amazon', 
       label: '🛒 Shopping Cart', 
+      title: 'Amazon Shopping Cart Demo',
+      description: 'Experience how arrays power e-commerce shopping carts. Add and remove items to see how arrays manage dynamic content.',
       component: () => <AmazonCartDemo products={AmazonproductData} />, 
       explanation: explainAmazonCart 
     },
     { 
       id: 'netflix', 
       label: '🎬 Watchlist', 
+      title: 'Netflix Watchlist Demo',
+      description: 'See how arrays manage your streaming watchlist. Add movies, reorder them, and remove them from your list.',
       component: () => <NetflixWatchListDemo />, 
       explanation: explainNetflixWatchlist 
     },
     { 
       id: 'youtube', 
       label: '▶️ Video Queue', 
+      title: 'YouTube Video Queue Demo',
+      description: 'Explore how arrays power video playlists. Add videos, skip to the next one, and manage your queue.',
       component: () => <YouTubeQueueDemo />, 
       explanation: explainYouTubeQueue 
     }
@@ -37,6 +43,7 @@ export default function ArraysPage() {
 
   const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component;
   const ActiveExplanation = tabs.find(tab => tab.id === activeTab)?.explanation;
+  const ActiveTab = tabs.find(tab => tab.id === activeTab);
 
   const [items, setItems] = useState([
     {
@@ -89,6 +96,12 @@ export default function ArraysPage() {
           </div>
 
           <div className="mt-4">
+            {ActiveTab && (
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{ActiveTab.title}</h3>
+                <p className="text-gray-600 mb-4">{ActiveTab.description}</p>
+              </div>
+            )}
             {ActiveComponent && <ActiveComponent />}
           </div>
         </div>
@@ -119,36 +132,151 @@ export default function ArraysPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-6 mt-8">
-          <h2 className="text-2xl font-bold text-blue-700 mb-4">📚 Educational Content</h2>
-          <div className="prose max-w-none">
-            <h3 className="text-xl font-semibold text-blue-600">What are Arrays?</h3>
-            <p className="text-gray-700">
-              Arrays are collections of elements stored in contiguous memory locations. Each element can be accessed directly using its index, making arrays efficient for random access operations.
-            </p>
+          <h2 className="text-2xl font-bold text-blue-700 mb-6 flex items-center justify-center">
+            <span className="bg-blue-100 p-2 rounded-full mr-3">📚</span>
+            Educational Content
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-white p-5 rounded-lg border border-blue-100 shadow-sm">
+              <h3 className="text-xl font-semibold text-blue-700 mb-3 flex items-center">
+                <span className="bg-blue-200 p-1 rounded-full mr-2">🔍</span>
+                What are Arrays?
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Arrays are collections of elements stored in contiguous memory locations. Each element can be accessed directly using its index, making arrays efficient for random access operations.
+              </p>
+              <div className="mt-4 bg-blue-100 p-3 rounded-md">
+                <p className="text-sm text-blue-800 font-medium">Quick Fact:</p>
+                <p className="text-sm text-blue-700">Arrays are the most fundamental data structure in programming, used in virtually every application.</p>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-50 to-white p-5 rounded-lg border border-green-100 shadow-sm">
+              <h3 className="text-xl font-semibold text-green-700 mb-3 flex items-center">
+                <span className="bg-green-200 p-1 rounded-full mr-2">🔑</span>
+                Key Characteristics
+              </h3>
+              <ul className="list-none space-y-2 text-gray-700">
+                <li className="flex items-start">
+                  <span className="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-xs">1</span>
+                  <span><strong>Fixed Size:</strong> Traditional arrays have a fixed size determined at declaration</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-xs">2</span>
+                  <span><strong>Contiguous Memory:</strong> Elements are stored in adjacent memory locations</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-xs">3</span>
+                  <span><strong>Random Access:</strong> O(1) time complexity for accessing elements by index</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center mr-2 mt-0.5 text-xs">4</span>
+                  <span><strong>Index-based:</strong> Elements are accessed using zero-based indexing</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-white p-5 rounded-lg border border-purple-100 shadow-sm">
+              <h3 className="text-xl font-semibold text-purple-700 mb-3 flex items-center">
+                <span className="bg-purple-200 p-1 rounded-full mr-2">⚡</span>
+                Common Operations
+              </h3>
+              <div className="space-y-3">
+                <div className="bg-white p-3 rounded-md border border-purple-100">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-purple-800">Access</span>
+                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-mono">O(1)</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">Direct access using index</p>
+                </div>
+                <div className="bg-white p-3 rounded-md border border-purple-100">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-purple-800">Search</span>
+                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-mono">O(n)</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">Linear search through elements</p>
+                </div>
+                <div className="bg-white p-3 rounded-md border border-purple-100">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-purple-800">Insertion</span>
+                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-mono">O(n)</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">May require shifting elements</p>
+                </div>
+                <div className="bg-white p-3 rounded-md border border-purple-100">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-purple-800">Deletion</span>
+                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-mono">O(n)</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">May require shifting elements</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-br from-amber-50 to-white p-5 rounded-lg border border-amber-100 shadow-sm">
+              <h3 className="text-xl font-semibold text-amber-700 mb-3 flex items-center">
+                <span className="bg-amber-200 p-1 rounded-full mr-2">🌐</span>
+                Real-World Applications
+              </h3>
+              <div className="space-y-3">
+                <div className="flex items-center bg-white p-3 rounded-md border border-amber-100">
+                  <span className="bg-amber-100 text-amber-800 p-2 rounded-full mr-3">🛒</span>
+                  <div>
+                    <p className="font-medium text-amber-800">E-commerce</p>
+                    <p className="text-sm text-gray-600">Shopping carts and product catalogs</p>
+                  </div>
+                </div>
+                <div className="flex items-center bg-white p-3 rounded-md border border-amber-100">
+                  <span className="bg-amber-100 text-amber-800 p-2 rounded-full mr-3">🎵</span>
+                  <div>
+                    <p className="font-medium text-amber-800">Media Players</p>
+                    <p className="text-sm text-gray-600">Playlists and video queues</p>
+                  </div>
+                </div>
+                <div className="flex items-center bg-white p-3 rounded-md border border-amber-100">
+                  <span className="bg-amber-100 text-amber-800 p-2 rounded-full mr-3">📱</span>
+                  <div>
+                    <p className="font-medium text-amber-800">Social Media</p>
+                    <p className="text-sm text-gray-600">News feeds and user lists</p>
+                  </div>
+                </div>
+                <div className="flex items-center bg-white p-3 rounded-md border border-amber-100">
+                  <span className="bg-amber-100 text-amber-800 p-2 rounded-full mr-3">🎮</span>
+                  <div>
+                    <p className="font-medium text-amber-800">Gaming</p>
+                    <p className="text-sm text-gray-600">Inventory systems and leaderboards</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 bg-gradient-to-r from-blue-100 to-purple-100 p-5 rounded-lg border border-blue-200">
+            <h3 className="text-lg font-semibold text-blue-800 mb-3">💻 Code Example</h3>
+            <div className="bg-gray-800 text-gray-100 p-4 rounded-md overflow-x-auto">
+              <pre className="text-sm font-mono">
+{`// Creating and manipulating arrays
+const fruits = ['apple', 'banana', 'orange'];
 
-            <h3 className="text-xl font-semibold text-blue-600 mt-6">Key Characteristics</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-2">
-              <li><strong>Fixed Size:</strong> Traditional arrays have a fixed size determined at declaration</li>
-              <li><strong>Contiguous Memory:</strong> Elements are stored in adjacent memory locations</li>
-              <li><strong>Random Access:</strong> O(1) time complexity for accessing elements by index</li>
-              <li><strong>Index-based:</strong> Elements are accessed using zero-based indexing</li>
-            </ul>
+// Accessing elements (O(1))
+console.log(fruits[0]); // 'apple'
 
-            <h3 className="text-xl font-semibold text-blue-600 mt-6">Common Operations</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-2">
-              <li><strong>Access:</strong> O(1) - Direct access using index</li>
-              <li><strong>Search:</strong> O(n) - Linear search through elements</li>
-              <li><strong>Insertion:</strong> O(n) - May require shifting elements</li>
-              <li><strong>Deletion:</strong> O(n) - May require shifting elements</li>
-            </ul>
+// Adding elements (O(1) at end, O(n) in middle)
+fruits.push('grape');    // Add to end
+fruits.unshift('lemon'); // Add to beginning
 
-            <h3 className="text-xl font-semibold text-blue-600 mt-6">Real-World Applications</h3>
-            <ul className="list-disc pl-5 text-gray-700 space-y-2">
-              <li><strong>E-commerce:</strong> Shopping carts and product catalogs</li>
-              <li><strong>Media Players:</strong> Playlists and video queues</li>
-              <li><strong>Social Media:</strong> News feeds and user lists</li>
-              <li><strong>Gaming:</strong> Inventory systems and leaderboards</li>
-            </ul>
+// Removing elements (O(1) at end, O(n) in middle)
+fruits.pop();           // Remove from end
+fruits.shift();         // Remove from beginning
+
+// Searching (O(n))
+const index = fruits.indexOf('banana'); // 1
+
+// Iterating
+fruits.forEach(fruit => console.log(fruit));`}
+              </pre>
+            </div>
           </div>
         </div>
       </div>
