@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
-import browserAnim from '/public/animations/browser.json';
-import musicAnim from '/public/animations/music.json';
-import textAnim from '/public/animations/text.json';
-import undoAnim from '/public/animations/undo.json';
-import gitAnim from '/public/animations/git.json';
+import browserAnim from '../../../public/animations/browser.json';
+import musicAnim from '../../../public/animations/music.json';
+import textAnim from '../../../public/animations/text.json';
+import undoAnim from '../../../public/animations/undo.json';
+import gitAnim from '../../../public/animations/git.json';
 
 // Import modularized components
 import BrowserHistoryDemo, { explainBrowserHistory } from './_components/BrowserHistoryDemo';
