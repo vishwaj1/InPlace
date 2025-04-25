@@ -10,7 +10,7 @@ export const explainAmazonCart = () => {
       <p className="text-green-700 mb-2">
         Shopping carts in e-commerce applications like Amazon use arrays to store and manage items. Here's how it works:
       </p>
-      <ul className="list-disc pl-5 text-green-700 space-y-1">
+      <ul className="list-disc pl-5 text-green-700 space-y-1 text-left">
         <li>Each item in the cart is an <strong>element</strong> in the array</li>
         <li>When a user adds an item, it's pushed to the end of the array</li>
         <li>When a user removes an item, it's filtered out or spliced from the array</li>
@@ -20,7 +20,7 @@ export const explainAmazonCart = () => {
       </ul>
       <div className="mt-3 p-3 bg-green-100 rounded-md">
         <p className="text-green-800 font-medium">Code Implementation:</p>
-        <pre className="text-xs text-green-900 mt-1 overflow-x-auto">
+        <pre className="text-xs text-green-900 mt-1 overflow-x-auto text-left">
 {`// Shopping cart implementation
 class ShoppingCart {
   constructor() {

@@ -17,9 +17,10 @@ const dataMap = {
     Linear: {
       Static: [{ label: 'Array', href: '/non-primitive/linear/static/arrays' }],
       Dynamic: [
-        { label: 'Linked List', href: '/non-primitive/linear/dynamic/linked-list' },
         { label: 'Stack', href: '/stack' },
-        { label: 'Queue', href: '/queue' }
+        { label: 'Queue', href: '/queue' },
+        { label: 'Linked List', href: '/non-primitive/linear/dynamic/linked-list' }
+
       ]
     },
     'Non-Linear': [
@@ -82,7 +83,7 @@ export default function HomePage() {
     connect('linear', 'static');
     connect('linear', 'dynamic');
     connect('static', 'array');
-    ['linked list', 'stack', 'queue'].forEach((id, index, arr) => {
+    ['stack', 'queue', 'linked list'].forEach((id, index, arr) => {
       if (index === 0) {
         connect('dynamic', id);
       } else {

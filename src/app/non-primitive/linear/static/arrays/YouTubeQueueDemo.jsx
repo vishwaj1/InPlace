@@ -34,7 +34,7 @@ export const explainYouTubeQueue = () => {
       <p className="text-red-700 mb-2">
         YouTube's video queue system uses arrays to manage the playlist of videos. Here's how it works:
       </p>
-      <ul className="list-disc pl-5 text-red-700 space-y-1">
+      <ul className="list-disc pl-5 text-red-700 space-y-1 text-left">
         <li>Each video in the queue is an <strong>element</strong> in the array</li>
         <li>When a user adds a video, it's pushed to the end of the array</li>
         <li>When a video finishes playing, it's removed from the front of the array</li>
@@ -44,7 +44,7 @@ export const explainYouTubeQueue = () => {
       </ul>
       <div className="mt-3 p-3 bg-red-100 rounded-md">
         <p className="text-red-800 font-medium">Code Implementation:</p>
-        <pre className="text-xs text-red-900 mt-1 overflow-x-auto">
+        <pre className="text-xs text-red-900 mt-1 overflow-x-auto text-left">
 {`// Video Queue implementation
 class VideoQueue {
   constructor() {

@@ -8,7 +8,7 @@ const Node = ({ id, label }) => {
     'array': 'non-primitive/linear/static/arrays/',
     'stack': '/stack',
     'queue': '/queue',
-    'linkedlist': '/linkedlist',
+    'linkedlist': '/non-primitive/linear/dynamic/linked-list',
     'tree': '/tree',
     'graph': '/graph',
     'linear': 'non-primitive/linear',

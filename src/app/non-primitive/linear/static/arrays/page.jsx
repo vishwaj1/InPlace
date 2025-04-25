@@ -78,7 +78,7 @@ export default function ArraysPage() {
         <ArrayVisualizer />
 
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-blue-700 mb-4">🔄 Interactive Demos</h2>
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">🔄 Real-World Use Cases</h2>
           <div className="flex space-x-4 mb-6 border-b">
             {tabs.map((tab) => (
               <button
@@ -255,7 +255,7 @@ export default function ArraysPage() {
           <div className="mt-8 bg-gradient-to-r from-blue-100 to-purple-100 p-5 rounded-lg border border-blue-200">
             <h3 className="text-lg font-semibold text-blue-800 mb-3">💻 Code Example</h3>
             <div className="bg-gray-800 text-gray-100 p-4 rounded-md overflow-x-auto">
-              <pre className="text-sm font-mono">
+              <pre className="text-sm font-mono text-left">
 {`// Creating and manipulating arrays
 const fruits = ['apple', 'banana', 'orange'];
 

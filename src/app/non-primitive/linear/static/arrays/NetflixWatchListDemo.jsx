@@ -9,7 +9,7 @@ export const explainNetflixWatchlist = () => {
       <p className="text-purple-700 mb-2">
         Streaming platforms like Netflix use arrays to manage user watchlists. Here's how it works:
       </p>
-      <ul className="list-disc pl-5 text-purple-700 space-y-1">
+      <ul className="list-disc pl-5 text-purple-700 space-y-1 text-left">
         <li>Each movie or show in the watchlist is an <strong>element</strong> in the array</li>
         <li>When a user adds content, it's pushed to the end of the array</li>
         <li>When a user removes content, it's spliced from the array</li>
@@ -19,7 +19,7 @@ export const explainNetflixWatchlist = () => {
       </ul>
       <div className="mt-3 p-3 bg-purple-100 rounded-md">
         <p className="text-purple-800 font-medium">Code Implementation:</p>
-        <pre className="text-xs text-purple-900 mt-1 overflow-x-auto">
+        <pre className="text-xs text-purple-900 mt-1 overflow-x-auto text-left">
 {`// Watchlist implementation
 class Watchlist {
   constructor() {
