@@ -8,12 +8,12 @@ const LeaderLine = dynamic(() => import('leader-line-new'), { ssr: false });
 
 const Node = ({ id, label }) => {
   const hrefMap = {
-    'array': 'non-primitive/linear/static/arrays/',
-    'stack': '/stack',
-    'queue': '/queue',
-    'linkedlist': '/non-primitive/linear/dynamic/linked-list',
-    'tree': '/tree',
-    'graph': '/graph',
+    'array': 'non-primitive/linear/dynamic/static/arrays/',
+    'stack': 'non-primitive/linear/dynamic/stack',
+    'queue': 'non-primitive/linear/dynamic/queue',
+    'linkedlist': 'non-primitive/linear/dynamic/linked-list',
+    'tree': 'non-primitive/non-linear/tree',
+    'graph': 'non-primitive/non-linear/graph',
     'linear': 'non-primitive/linear',
     'non-linear': 'non-primitive/non-linear',
     'non-primitive': '/non-primitive'
@@ -81,7 +81,11 @@ export default function NonPrimitivePage() {
       });
 
       return () => {
-        lines.forEach((line) => line.remove());
+        lines.forEach((line) => {
+          if (line && typeof line.remove === 'function') {
+            line.remove();
+          }
+        });
       };
     }
   }, []);

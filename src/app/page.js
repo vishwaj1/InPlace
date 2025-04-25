@@ -18,16 +18,16 @@ const dataMap = {
   ],
   'Non-Primitive': {
     Linear: {
-      Static: [{ label: 'Array', href: '/non-primitive/linear/static/arrays' }],
+      Static: [{ label: 'Array', href: '/non-primitive/linear/dynamic/static/arrays' }],
       Dynamic: [
-        { label: 'Stack', href: '/stack' },
-        { label: 'Queue', href: '/queue' },
+        { label: 'Stack', href: '/non-primitive/linear/dynamic/stack' },
+        { label: 'Queue', href: '/non-primitive/linear/dynamic/queue' },
         { label: 'Linked List', href: '/non-primitive/linear/dynamic/linked-list' }
 
       ]
     },
     'Non-Linear': [
-      { label: 'Tree', href: '/tree' },
+      { label: 'Tree', href: '/non-primitive/non-linear/tree' },
       { label: 'Graph', href: '/graph' }
     ]
   }
@@ -106,7 +106,11 @@ export default function HomePage() {
       });
 
       return () => {
-        lines.forEach((line) => line.remove());
+        lines.forEach((line) => {
+          if (line && typeof line.remove === 'function') {
+            line.remove();
+          }
+        });
       };
     }
   }, []);
