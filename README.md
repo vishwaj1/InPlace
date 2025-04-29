@@ -6,7 +6,7 @@
 **InPlace** is a hands-on educational platform where every **Data Structure** and **Algorithm** is not only explained — it's brought to life with interactive, real-world implementations. Each concept page is crafted using the **very data structure** it teaches.
 
 ---
-###Link to webpage: https://in-place-lime.vercel.app/
+### Link to webpage: https://in-place-lime.vercel.app/
 
 ## 🔥 What Makes InPlace Unique?
 
